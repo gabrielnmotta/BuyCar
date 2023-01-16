@@ -1,4 +1,4 @@
-import { Document } from "iconsax-react";
+import { File } from "phosphor-react";
 import { useRef, useState } from "react";
 
 // na prop accept vc passa o tipo de arquivo que vc quer aceitar, na prop ID vc passa o id do input que precisa ser o mesmo do htmlFor do label
@@ -25,7 +25,7 @@ export const UploadFile = ({ handleDoc }: UploadFileProps) => {
         <button onClick={() => labelRef.current?.click()} type="button">
           {doc ? doc.name : "Clique para selecionar um arquivo"}
         </button>
-        <Document className="text-typoHigh" />
+        <File className="text-typoHigh" />
       </label>
       <input
         type="file"

@@ -1,5 +1,5 @@
-import { SearchNormal1 } from "iconsax-react";
 import { useEffect, useRef, useState } from "react";
+import { MagnifyingGlass, X } from "phosphor-react";
 
 interface SearchProps {
   label?: string;
@@ -8,8 +8,12 @@ interface SearchProps {
   list: any[];
   optionKey: string;
   optionValue: string;
-  returnItem: (o: object) => void;
+  returnItem: (o: any) => void;
   maxHeight?: number;
+  subtitle?: string;
+  required?: boolean;
+  initialValue?: string;
+  disabled?: boolean;
 }
 
 export default function Search({
@@ -21,6 +25,10 @@ export default function Search({
   returnItem,
   maxHeight = 10,
   placeholder,
+  subtitle,
+  required,
+  initialValue,
+  disabled,
 }: SearchProps) {
   const [value, setValue] = useState("");
   const [open, setOpen] = useState(false);
@@ -39,30 +47,50 @@ export default function Search({
     }
   };
 
+  useEffect(() => {
+    if (initialValue) setValue(initialValue);
+  }, []);
+
   const filteredList =
     value.length > 0
-      ? list.filter((item) =>
+      ? list?.filter((item) =>
           item[optionValue].toLowerCase().includes(value.toLowerCase())
         )
       : list;
 
   return (
     <div className="flex flex-col relative " ref={ref}>
-      {label && <p className="font-bold text-sm mb-1">{label}</p>}
+      <div className="flex items-center justify-between">
+        {label && <p className="text-sm mb-2">{label}</p>}
+        {subtitle && (
+          <p className="text-sm mb-2 text-neutral-500">{subtitle}</p>
+        )}
+      </div>
       <div
-        className={`border-[1px] border-neutral-200 overflow-hidden focus-within:border-primary-900 flex items-center w-full bg-transparent pl-4  rounded-2xl ${containerStyle}`}
+        className={`border-[1px] border-neutral-200 overflow-hidden focus-within:border-primary-900 flex items-center w-full  pl-4  rounded-2xl ${containerStyle} ${
+          disabled ? "bg-neutral-100" : "bg-transparent"
+        }`}
       >
-        <SearchNormal1 />
+        <MagnifyingGlass />
 
         <input
-          className="outline-none p-4 w-full bg-transparent "
+          className="outline-none p-2 w-full bg-transparent "
           value={value}
           onChange={(e) => {
             setValue(e.target.value);
           }}
           onFocus={() => setOpen(true)}
           placeholder={placeholder}
+          required={required}
+          disabled={disabled}
         />
+
+        {!disabled && (
+          <X
+            className="mr-3 cursor-pointer hover:text-primary-900"
+            onClick={() => setValue("")}
+          />
+        )}
       </div>
 
       {open && filteredList.length > 0 && (

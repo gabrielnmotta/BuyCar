@@ -34,13 +34,13 @@ export default function Button({
       : "p-[10px] text-base ";
 
   let disabledStyle = disabled
-    ? "cursor-not-allowed text-neutral-500 border-neutral-200 hover:border-neutral-200 hover:text-neutral-500 " +
+    ? "cursor-not-allowed !text-neutral-500 !border-neutral-200 !bg-neutral-200 !hover:border-neutral-200 hover:text-neutral-500 " +
       (!empty ? " bg-neutral-200 hover:bg-neutral-200 " : " ")
     : " ";
 
   return (
     <button
-      className={`flex items-center justify-center rounded-2xl gap-3 transition-all text-center border-[1px] border-primary-900 hover:border-primary-800 active:border-button-1000 ${emptyStyle} ${sizeStyle} ${disabledStyle} ${containerStyle}`}
+      className={`flex items-center justify-center rounded-2xl gap-3 transition-all text-center border-[1px] border-primary-900 hover:border-primary-800 active:border-button-1000 cursor-pointer ${emptyStyle} ${sizeStyle} ${disabledStyle} ${containerStyle}`}
       {...props}
     >
       {title && <p>{title}</p>}
