@@ -1,5 +1,15 @@
 import { getAuth, signOut } from "firebase/auth";
-import { ArrowLeft2, ArrowRight2, Chart1, Icon, MessageText, Mirror, MoneyRecive, People, Personalcard } from "iconsax-react";
+import {
+  ArrowLeft2,
+  ArrowRight2,
+  Chart1,
+  Icon,
+  MessageText,
+  Mirror,
+  MoneyRecive,
+  People,
+  Personalcard,
+} from "iconsax-react";
 import { useRouter } from "next/router";
 import Button from "../../FormsComponents/Button";
 import MenuItem from "./MenuItem";
@@ -7,13 +17,13 @@ import MenuItem from "./MenuItem";
 const SideBar = () => {
   const router = useRouter();
 
-    const auth = getAuth();
-    signOut(auth).then(() => {
-      
-    }).catch((error) => {
+  const auth = getAuth();
+  signOut(auth)
+    .then(() => {})
+    .catch((error) => {
       // An error happened.
     });
-  
+
   return (
     <nav className="flex flex-col w-40 max-w-[10rem] h-full border-r-[1px] border-neutral-200 pt-8 ">
       <p className="text-body ml-4 mb-3">Menu</p>
@@ -28,7 +38,6 @@ const SideBar = () => {
           <MenuItem item={item} key={index} />
         ))}
       </div>
-
     </nav>
   );
 };
@@ -45,14 +54,13 @@ const arrMenu: ArrMenuI[] = [
   {
     route: "/userAccess",
     Icon: Personalcard,
-    label: "Financiados",
+    label: "Financiar",
   },
   {
     route: "/othersAccess",
     Icon: MoneyRecive,
-    label: "Financiar",
+    label: "Financiados",
   },
-  
 ];
 
 const arrHelp: ArrMenuI[] = [

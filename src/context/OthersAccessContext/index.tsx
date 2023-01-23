@@ -48,7 +48,7 @@ export const OthersAccessProvider = ({
   const [allList, setAllList] = useState<UserI[]>([]);
 
   const getAll = () => {
-    const q = collection(db, "others");
+    const q = collection(db, "visitors");
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const others: UserI[] = [];
       querySnapshot.forEach((doc) => {
@@ -59,11 +59,7 @@ export const OthersAccessProvider = ({
   };
 
   const getApproved = () => {
-    const q = query(
-      collection(db, "others"),
-      orderBy("registration_time"),
-      where("approved", "==", true)
-    );
+    const q = query(collection(db, "visitors"), where("approved", "==", true));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const others: UserI[] = [];
       querySnapshot.forEach((doc) => {
@@ -74,11 +70,7 @@ export const OthersAccessProvider = ({
   };
 
   const getRepproved = () => {
-    const q = query(
-      collection(db, "others"),
-      orderBy("registration_time"),
-      where("approved", "==", false)
-    );
+    const q = query(collection(db, "visitors"), where("approved", "==", false));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const others: UserI[] = [];
       querySnapshot.forEach((doc) => {
@@ -89,11 +81,7 @@ export const OthersAccessProvider = ({
   };
 
   const getNotAwnsered = () => {
-    const q = query(
-      collection(db, "others"),
-      orderBy("registration_time"),
-      where("approved", "==", null)
-    );
+    const q = query(collection(db, "visitors"), where("approved", "==", null));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const others: UserI[] = [];
       querySnapshot.forEach((doc) => {
