@@ -11,7 +11,11 @@ const Header = () => {
   return (
     <header className="w-full min-h-[5rem] h-20 overflow-hidden flex border-b-[1px] border-neutral-200">
       <div className="h-full w-40 bg-primary-900">
-        <img src="/Layout/logo.png" alt="Burgi" className="w-full h-auto p-2" />
+        <img
+          src="/Layout/buycar.png"
+          alt="BuyCar"
+          className="w-full h-auto mt-3"
+        />
       </div>
       <div className="flex-1 flex items-center justify-between px-8">
         <div className="flex items-center gap-2 text-title4">
