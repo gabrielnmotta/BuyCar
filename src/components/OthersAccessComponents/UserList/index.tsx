@@ -140,15 +140,19 @@ const UserList = ({ search }: { search: string }) => {
           style: { overflow: "hidden" },
         },
         {
-          subtitle: "Data de Nascimento",
-          dataKey: "birth_date",
+          subtitle: "Agente",
+          dataKey: "production_system",
         },
         {
-          subtitle: "Profissão",
-          dataKey: "profession",
+          subtitle: "Revendedor",
+          dataKey: "farm_name",
         },
         {
-          subtitle: "Horário de envio",
+          subtitle: "Modelo",
+          dataKey: "property_area",
+        },
+        {
+          subtitle: "Placa",
           dataKey: "registration_time",
         },
         {
